@@ -1,0 +1,41 @@
+INICIO
+    // Declaración variables
+    CANTIDAD_NOTAS = 0
+    SUMA_NOTAS = 0
+    PROMEDIO = 0
+    NOTA = 0
+    RESPUESTA = ""
+
+    // Usamos un ciclo para solicitar las notas
+    REPETIR
+        // Solicitar nota al usuario
+        ESCRIBIR "Ingresa una nota (o escribe la palabra 'listo' para terminar): "
+        LEER NOTA
+
+        // Validar si el usuario quiere terminar
+        SI NOTA ES IGUAL A "listo" O NOTA ES IGUAL A "LISTO" ENTONCES
+            SALIR DEL CICLO
+        FIN SI
+
+        // aquí convertimos la entrada en un número y validamos si el número es válido
+        NOTA_NUMERICA = CONVERTIR A NUMERO(NOTA)
+
+        SI ES NUMERO(NOTA_NUMERICA) Y NOTA_NUMERICA ES MAYOR O IGUAL A 0 ENTONCES
+            SUMA_NOTAS = SUMA_NOTAS + NOTA_NUMERICA
+            CANTIDAD_NOTAS = CANTIDAD_NOTAS + 1
+        SINO
+            ESCRIBIR "Error: Por favor, ingresa un número válido."
+        FIN SI
+
+    HASTA QUE EL USUARIO INGRESE "listo" O "LISTO"
+
+    // Calcular el promedio si se registraron notas
+    SI CANTIDAD_NOTAS ES MAYOR A 0 ENTONCES
+        PROMEDIO = SUMA_NOTAS / CANTIDAD_NOTAS
+        ESCRIBIR "-----------------------------------"
+        ESCRIBIR "El promedio de las " + CANTIDAD_NOTAS + " notas ingresadas es: " + PROMEDIO
+    SINO
+        ESCRIBIR "No se ingresaron notas para calcular el promedio."
+    FIN SI
+
+FIN
